@@ -33,6 +33,10 @@ app.get('/api/comments/pending', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('<h1>Welcome to My CMS App!</h1>');
+});
+
 app.patch('/api/comments/:id', async (req, res) => {
   try {
     const { approved, adminReply } = req.body;
