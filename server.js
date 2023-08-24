@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect('mongodb+srv://imran:imran@cluster0.uiiuj4g.mongodb.net/?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
+  useNewUrlParser: true, 
   useUnifiedTopology: true,
 });
 
