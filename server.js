@@ -50,7 +50,7 @@ app.patch('/api/comments/:id', async (req, res) => {
     res.status(500).send('Error approving comment.');
   }
 });
-app.patch('/api/question', async (req, res) => {
+app.post('/api/question', async (req, res) => {
   try {
     const { question } = req.body;
     await Question.findOneAndUpdate({}, { question }, { upsert: true });
