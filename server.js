@@ -50,7 +50,25 @@ app.patch('/api/comments/:id', async (req, res) => {
     res.status(500).send('Error approving comment.');
   }
 });
+app.patch('/api/question', async (req, res) => {
+  try {
+    const { question } = req.body;
+    await Question.findOneAndUpdate({}, { question }, { upsert: true });
+    res.status(200).send('Question updated successfully.');
+  } catch (error) {
+    res.status(500).send('Error updating question.');
+  }
+});
 
+// Add new route for fetching the question
+app.get('/api/question', async (req, res) => {
+  try {
+    const questionData = await Question.findOne();
+    res.json(questionData);
+  } catch (error) {
+    res.status(500).send('Error fetching question.');
+  }
+});
 app.delete('/api/comments/:id', async (req, res) => {
   try {
     await Comment.findByIdAndDelete(req.params.id);
